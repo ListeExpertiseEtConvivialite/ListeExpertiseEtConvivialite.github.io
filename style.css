@@ -11,21 +11,66 @@ header {
     padding: 20px;
     font-size: 30px;
     text-align: center;
+    position: relative;
 }
 
-.navbar {
-    background-color: rgb(7, 107, 7);
-    padding: 20px 20px;
+/* New text inside header */
+.header-text {
+    font-size: 50px;
+    margin-top: 10px;
 }
 
+/* Always show the menu toggle */
+.menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.menu-toggle.active {
+    transform: rotate(90deg);
+}
+
+.menu-toggle::before {
+    content: "\2630"; /* Hamburger icon */
+}
+
+.menu-toggle.active::before {
+    content: "\2716"; /* Cross icon */
+}
+
+/* Updated menu visibility */
 .nav-links {
-    list-style: inside;
-    display: center;
-    gap: 30px;
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    position: absolute;
+    list-style-type: disc;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: rgb(7, 107, 7);
+    text-align: center;
+}
+
+.nav-links li::before {
+    content: "➤"; /* Right arrow */
+    color: white;  /* Match your theme */
+    margin-right: 10px;
+    font-size: 16px;
 }
 
 .nav-links li {
+    font-family: 'Courier New', Courier, monospace;
     display: inline-block;
+    margin-bottom: 20px;
     margin-right: 70px;
 }
 
@@ -34,53 +79,9 @@ header {
     color: white;
 }
 
-.menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out;
+.nav-links.active {
+    display: flex;
 }
-
-.menu-toggle.active {
-    transform: rotate(90deg);
-}
-
-.menu-toggle::before {
-    content: "\2630";
-}
-
-.menu-toggle.active::before {
-    content: "\2716";
-}
-
-/* Responsive Design */
-@media (max-width: 1000px) {
-    .nav-links {
-        display: none; /* Hide menu initially */
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        background-color: rgb(7, 107, 7);
-        text-align: center;
-    }
-
-    .nav-links.active {
-        display: flex;
-    }
-
-    .menu-toggle {
-        display: block;
-    }
-}
-
-/* nav ul li:last-child {
-    margin-right: 0;
-} */
 
 /* Page Content */
 main {
